@@ -1,0 +1,22 @@
+
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Picture', new_picture_path, class:'btn btn-primary' %>
+<h1>Listing Pictures</h1>
+<ul class="row"> 
+	<% @pictures.each do |picture| %>
+		<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+			<div class='thumbnail'>
+				<%= link_to image_tag(picture.image.url(:thumb)), picture, remote: true %>
+				<center>
+		        	<%= link_to 'Edit', edit_picture_path(picture) %> | 
+		        	<%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        	</center>
+			</div>
+			
+		</li>
+	  	
+	<% end %>
+</ul>
+
+<%= render 'dialog' %>
